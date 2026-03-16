@@ -14,7 +14,7 @@ function GallerySection() {
         </p>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {galleryImages.map((image, index) => (
           <figure
             key={image.src}
@@ -24,9 +24,9 @@ function GallerySection() {
               src={image.src}
               alt={image.alt}
               loading="lazy"
-              className="h-72 w-full object-cover transition duration-500 group-hover:scale-105"
+              className="h-60 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-72"
             />
-            <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-stone-950/70 to-transparent px-4 py-3 text-sm text-white opacity-0 transition duration-300 group-hover:opacity-100">
+            <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-stone-950/70 to-transparent px-4 py-3 text-xs text-white opacity-100 transition duration-300 sm:text-sm sm:opacity-0 sm:group-hover:opacity-100">
               FreshBites India Scene {index + 1}
             </figcaption>
           </figure>

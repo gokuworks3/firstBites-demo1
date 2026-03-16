@@ -19,7 +19,7 @@ function AboutSection() {
           </div>
           <a
             href="#contact"
-            className="mt-8 inline-flex rounded-full bg-stone-900 px-7 py-3 text-sm font-semibold text-white transition duration-300 hover:-translate-y-0.5 hover:bg-stone-700 hover:shadow-warm"
+            className="mt-8 inline-flex w-full items-center justify-center rounded-full bg-stone-900 px-7 py-3 text-sm font-semibold text-white transition duration-300 hover:-translate-y-0.5 hover:bg-stone-700 hover:shadow-warm sm:w-auto"
           >
             Book A Table
           </a>
@@ -30,7 +30,7 @@ function AboutSection() {
             src={aboutContent.image}
             alt={aboutContent.alt}
             loading="lazy"
-            className="h-[420px] w-full rounded-[1.3rem] object-cover"
+            className="h-72 w-full rounded-[1.3rem] object-cover sm:h-96 lg:h-[420px]"
           />
         </div>
       </div>

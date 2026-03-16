@@ -81,7 +81,7 @@ function ContactSection() {
           <ul className="mt-6 space-y-4">
             <li className="flex items-start gap-3 text-stone-700">
               <FaLocationDot className="mt-1 h-5 w-5 text-brand-600" aria-hidden="true" />
-              <span>{contactInfo.address}</span>
+              <span className="break-words">{contactInfo.address}</span>
             </li>
             <li className="flex items-start gap-3 text-stone-700">
               <FaPhone className="mt-1 h-5 w-5 text-brand-600" aria-hidden="true" />
@@ -101,7 +101,7 @@ function ContactSection() {
             <iframe
               title="FreshBites location map"
               src={contactInfo.mapEmbedUrl}
-              className="h-72 w-full"
+              className="h-64 w-full sm:h-72"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             />
@@ -110,7 +110,7 @@ function ContactSection() {
 
         <div className="rounded-3xl border border-brand-100 bg-white p-6 shadow-sm sm:p-8">
           <p className="section-kicker">Contact Form</p>
-          <h3 className="font-display text-3xl text-stone-900">Send Us A Message</h3>
+          <h3 className="font-display text-2xl text-stone-900 sm:text-3xl">Send Us A Message</h3>
           <p className="mt-3 text-sm leading-relaxed text-stone-600 sm:text-base">
             For reservations, festive dining, or family catering, fill out the form and our team will get back soon.
           </p>
