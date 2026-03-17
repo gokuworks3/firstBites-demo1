@@ -1,26 +1,22 @@
-import { useEffect, useState } from "react";
-import fallbackImage from "../assets/image-fallback.svg";
+import { useState } from "react";
+import fallbackImage from "../assets/images/image-fallback.svg";
 
-function SafeImage({ src, alt, className, loading = "lazy", fetchPriority }) {
-  const [imageSrc, setImageSrc] = useState(src);
-
-  useEffect(() => {
-    setImageSrc(src);
-  }, [src]);
+function SafeImage({ src, alt, className, loading = "lazy", decoding = "async" }) {
+  const [currentSrc, setCurrentSrc] = useState(src);
 
   const handleError = () => {
-    if (imageSrc !== fallbackImage) {
-      setImageSrc(fallbackImage);
+    if (currentSrc !== fallbackImage) {
+      setCurrentSrc(fallbackImage);
     }
   };
 
   return (
     <img
-      src={imageSrc}
+      src={currentSrc}
       alt={alt}
       className={className}
       loading={loading}
-      fetchPriority={fetchPriority}
+      decoding={decoding}
       onError={handleError}
     />
   );

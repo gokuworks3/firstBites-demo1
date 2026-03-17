@@ -1,25 +1,25 @@
 import Navbar from "./components/Navbar";
-import HeroSection from "./components/HeroSection";
-import PopularDishesSection from "./components/PopularDishesSection";
-import AboutSection from "./components/AboutSection";
-import MenuSection from "./components/MenuSection";
-import DessertsSection from "./components/DessertsSection";
-import GallerySection from "./components/GallerySection";
-import ContactSection from "./components/ContactSection";
+import Hero from "./components/Hero";
+import Dishes from "./components/Dishes";
+import About from "./components/About";
+import Menu from "./components/Menu";
+import Testimonials from "./components/Testimonials";
+import Gallery from "./components/Gallery";
+import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
 function App() {
   return (
-    <div className="overflow-x-hidden bg-brand-50/40">
+    <div className="overflow-x-hidden bg-fresh-cream text-fresh-brown">
       <Navbar />
       <main>
-        <HeroSection />
-        <PopularDishesSection />
-        <AboutSection />
-        <MenuSection />
-        <DessertsSection />
-        <GallerySection />
-        <ContactSection />
+        <Hero />
+        <Dishes />
+        <About />
+        <Menu />
+        <Testimonials />
+        <Gallery />
+        <Contact />
       </main>
       <Footer />
     </div>
