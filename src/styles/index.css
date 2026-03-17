@@ -14,6 +14,21 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #fffaf0;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(234, 88, 12, 0.55);
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ea580c;
+}
+
 body {
   margin: 0;
   min-height: 100vh;
@@ -46,6 +61,39 @@ h6 {
   color: #2a1a12;
 }
 
+/* Decorative ambient blobs for sections */
+.section-bg-alt {
+  background: linear-gradient(135deg, #fdf2df 0%, #fffaf0 60%, #fef3e2 100%);
+  position: relative;
+}
+.section-bg-alt::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.025'/%3E%3C/svg%3E") repeat;
+  pointer-events: none;
+}
+
+.section-bg-dark {
+  background: linear-gradient(135deg, #2a1a12 0%, #1a0f0a 50%, #3b1f12 100%);
+}
+
+/* Shimmer text effect */
+.text-shimmer {
+  background: linear-gradient(90deg, #ea580c 0%, #f59e0b 40%, #ea580c 80%, #f59e0b 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s linear infinite;
+}
+
+/* Glow pulse button */
+.btn-glow {
+  box-shadow: 0 0 0 0 rgba(234, 88, 12, 0.5);
+  animation: pulse-ring 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+}
+
 @layer components {
   .section-wrap {
     @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
@@ -56,7 +104,12 @@ h6 {
   }
 
   .section-kicker {
-    @apply mb-3 inline-block rounded-full bg-fresh-orange/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-fresh-orange;
+    @apply mb-3 inline-flex items-center gap-2 rounded-full bg-fresh-orange/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-fresh-orange;
+  }
+
+  .section-kicker::before {
+    content: "";
+    @apply inline-block h-1.5 w-1.5 rounded-full bg-fresh-orange;
   }
 
   .section-copy {
@@ -64,14 +117,45 @@ h6 {
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center rounded-full bg-fresh-orange px-6 py-3 text-sm font-semibold text-white transition duration-300 hover:-translate-y-0.5 hover:bg-orange-700;
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-fresh-orange px-7 py-3.5 text-sm font-semibold text-white shadow-glow transition-all duration-300 hover:-translate-y-1 hover:bg-orange-600 hover:shadow-glow-lg;
   }
 
   .btn-outline {
-    @apply inline-flex items-center justify-center rounded-full border border-white/70 px-6 py-3 text-sm font-semibold text-white transition duration-300 hover:-translate-y-0.5 hover:bg-white/10;
+    @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-white/70 px-7 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-white hover:bg-white/15;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-fresh-orange/40 bg-white px-7 py-3.5 text-sm font-semibold text-fresh-orange transition-all duration-300 hover:-translate-y-1 hover:border-fresh-orange hover:bg-fresh-orange/5;
   }
 
   .card-glass {
-    @apply rounded-3xl border border-fresh-brown/10 bg-white/90 shadow-soft backdrop-blur-sm;
+    @apply rounded-3xl bg-white/90 shadow-card backdrop-blur-sm transition-all duration-300;
+    border: 1px solid rgba(59, 31, 18, 0.08);
+  }
+
+  .card-glass:hover {
+    @apply shadow-card-hover;
+  }
+
+  .form-input {
+    @apply w-full rounded-xl border border-fresh-brown/15 bg-white px-4 py-3 text-sm text-fresh-brown outline-none transition-all duration-200 placeholder:text-fresh-brown/40 focus:border-fresh-orange focus:ring-2 focus:ring-fresh-orange/10;
+  }
+
+  .badge-veg {
+    @apply inline-flex h-5 w-5 items-center justify-center rounded-sm border-2 border-green-600;
+  }
+
+  .badge-nonveg {
+    @apply inline-flex h-5 w-5 items-center justify-center rounded-sm border-2 border-red-600;
+  }
+
+  .divider-fancy {
+    @apply flex items-center gap-4;
+  }
+
+  .divider-fancy::before,
+  .divider-fancy::after {
+    content: "";
+    @apply h-px flex-1 bg-gradient-to-r from-transparent via-fresh-orange/30 to-transparent;
   }
 }
